@@ -1,11 +1,11 @@
-import './App.css';
+import {RouterProvider} from "react-router-dom";
+import root from "./router/root";
 
 function App() {
   return (
-    <h1 className="text-center text-red-600 font-bold userline">
-      Hello~~~
-    </h1>
+    <RouterProvider router={root}/>
   );
 }
+
 
 export default App;
