@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const BasicMenu = () => {
     return(
-        <nav id="navbar" className="flex ">
+        <nav id="navbar" className="flex py-5">
             <div className="w-4/5">
                 <ul className="flex p-4 ">
                     <li className="pr-6 text-2xl">
