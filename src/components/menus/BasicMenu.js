@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 
 const BasicMenu = () => {
     return(
-        <nav id="navbar" className="flex bg-blue-300">
-            <div className="w-4/5 bg-gray-500">
-                <ul className="flex p-4 text-white font-bold">
+        <nav id="navbar" className="flex ">
+            <div className="w-4/5">
+                <ul className="flex p-4 ">
                     <li className="pr-6 text-2xl">
                         <Link to={"/"}>Main</Link>
                     </li>
@@ -20,8 +20,8 @@ const BasicMenu = () => {
                 </ul>
             </div>
 
-            <div className="w-1/5 flex justify-end bg-orange-300 p-4 font-medium">
-                <div className="text-white text-sm m-1 rounded">
+            <div className="w-1/5 flex justify-end  p-4 font-medium">
+                <div className=" text-2xl m-1 rounded">
                     Login
                 </div>
             </div>
