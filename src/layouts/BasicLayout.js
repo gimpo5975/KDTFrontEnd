@@ -66,14 +66,14 @@ const BasicLayout = ({children}) => {
     </header> */}
     {/* 상단 여백 my-5(상/하 마진) 제거 */}
     <div className="bg-white w-full flex flex-col space-y-4 md:flex-row
-     md:space-y-0 text-white">
+     md:space-y-0 ">
         {/* py(위/아래 패딩)-40  --> py-5 */}
-        <main className="bg-black md:w-4/5 lg:w-3/4 px-5 py-20">
+        <main className=" md:w-4/5 lg:w-3/4 px-5 py-20">
            <h1 className="text-2xl md:text-4xl"> 
                {children}
            </h1> 
         </main>
-        <aside className="bg-black md:w-1/5 lg:w-1/4 px-5 py-20">
+        <aside className=" md:w-1/5 lg:w-1/4 px-5 py-20">
             <h1 className="text-2xl md:text-4xl">
                 Sidebar
             </h1>
