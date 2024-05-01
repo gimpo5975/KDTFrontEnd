@@ -12,7 +12,7 @@ export const getOne = async(tno)=>{
 
 export const getList = async(pageParam)=>{
 
-    const{page, size} = pageParam;
+    const{page, size} = pageParam;//구조 분해 할당 방식으로 인자객체에 {page:1, size:10}이렇개 변수와 동일한 key값을 줘야함
 
     const res = await axios.get(`${prefix}/list`,{params:{page:page, size:size}})
 
