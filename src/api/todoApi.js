@@ -4,6 +4,8 @@ export const API_SERVER_HOST = 'http://localhost:8080'
 
 const prefix = `${API_SERVER_HOST}/api/todo`
 
+
+//자료 한 개만 보기---
 export const getOne = async (tno) => {
 
   const response = await axios.get(`${prefix}/${tno}` )
