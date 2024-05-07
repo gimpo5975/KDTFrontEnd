@@ -1,12 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import BasicLayout from "../layouts/BasicLayout";
 function AboutPage(){
     return(
     <div className="text-3xl">
-        AboutPage
-        <div>
-            <Link to={"/about"}>About</Link>
-        </div>
+            <BasicLayout>
+            <div className="text-2xl md:text-4xl">AboutPage</div>
+            </BasicLayout>
     </div>
     )
 }
