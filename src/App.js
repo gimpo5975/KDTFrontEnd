@@ -1,9 +1,9 @@
+import { RouterProvider } from "react-router-dom";
+import root from "./router/root";
 
 function App() {
   return (
-    <>
-      <p>하잉</p>
-    </>
+    <RouterProvider router={root}/>
   );
 }
 
