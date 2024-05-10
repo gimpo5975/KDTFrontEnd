@@ -1,36 +1,38 @@
 import { createSearchParams, useNavigate, useSearchParams } from 'react-router-dom';
 
-
 const getNum = (param, defaultValue) => {
-
-    if(!param){
-        return defaultValue
+    if (!param) {
+        return defaultValue;
     }
-
-    return parseInt(param)
-
-}
+    return parseInt(param);
+};
 
 const useCustomMove = () => {
+    const navigate = useNavigate();
+    const [queryParams] = useSearchParams();
 
-    const navigate = useNavigate()
+    const page = getNum(queryParams.get('page'), 1);
+    const size = getNum(queryParams.get('size'), 10);
 
-    const [queryParams] = useSearchParams()
+    // page=3 & size=10
+    const queryDefault = createSearchParams({ page, size }).toString();
 
-    const page = getNum(queryParams.get('page'),1)
-    const size = getNum(queryParams.get('size'),10)
+    const moveToList = (pageParam) => {
+        let queryStr = "";
 
-    //page = 3 & size = 10
-    const queryDefault = createSearchParams({page, size}).toString()
+        if (pageParam) {
+            const pageNum = getNum(pageParam.page, 1);
+            const sizeNum = getNum(pageParam.size, 10);
+            queryStr = createSearchParams({ page: pageNum, size: sizeNum }).toString();
+        } else {
+            queryStr = queryDefault;
+        }
 
-    const moveToList = () => {
+        navigate({ pathname: "../list", search: queryStr });
 
-        navigate({pathname:`../list`, search:queryDefault})
+    };
 
-    }
-
-    return {moveToList}
-
+    return { moveToList};
 };
 
 export default useCustomMove;
