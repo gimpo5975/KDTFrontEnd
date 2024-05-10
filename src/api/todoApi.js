@@ -1,7 +1,7 @@
 import axios from "axios"
 
 
-export const API_SERVER_HOST = 'http/localhost:8080'
+export const API_SERVER_HOST = 'http://localhost:8080'
 
 const prefix = `${API_SERVER_HOST}/api/todo`//백틱을 사용하여 변수를 문자열로 합침 => 템플릿 리터럴
 
