@@ -32,7 +32,15 @@ const useCustomMove = () => {
 
     };
 
-    return { moveToList};
+
+    const moveToModify = (num) =>{
+        navigate({
+            pathname:`../modify/${num}`,
+            search:queryDefault
+        })
+    }
+
+    return { moveToList, moveToModify, page, size};
 };
 
 export default useCustomMove;
