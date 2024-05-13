@@ -42,7 +42,7 @@ export const deleteOne = async (tno) => {
 
 }
 
-//글 변경
+//글변경
 export const putOne = async (todo) => {
 
     const res = await axios.put(`${prefix}/${todo.tno}`, todo)
