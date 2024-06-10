@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { deleteOne, getOne, putOne } from '../../api/todoApi';
+import useCustomMove from '../../hooks/useCustomMove';
+import ResultModal from '../common/ResultModal';
 
 const initState = {
     tno: 0,
@@ -10,7 +12,15 @@ const initState = {
 };
 
 const ModifyComponent = ({ tno }) => {
+
     const [todo, setTodo] = useState(initState);
+
+    const [result, setResult] = useState(null);
+
+
+    //수정 -> 조회화면으로 이동
+    //삭제 -> 목록으로 이동
+    const {moveToRead, moveToList} = useCustomMove()
 
     useEffect(() => {
         getOne(tno).then(data => {
@@ -37,15 +47,25 @@ const ModifyComponent = ({ tno }) => {
     const handleClickDelete = () => {
         deleteOne(tno).then(data => {
             console.log("Delete Result : " + data)
+            setResult('Deleted')
         })
     };
 
     const handleClickModify = () => {
         putOne(todo).then(data => {
             console.log("Modify Result : " + data)
+            setResult('Modified')
         })
     };
 
+
+    const closeModal = () => {
+        if(result === 'Deleted'){
+            moveToList()
+        }else{
+            moveToRead(tno)
+        }
+    }
 
     return (
         <div className="border-2 border-sky-200 mt-10 m-2 p-4">
@@ -98,6 +118,7 @@ const ModifyComponent = ({ tno }) => {
                     Modify
                 </button>
             </div>
+            {result ? <ResultModal title={'처리결과'} content={result} callbackFn={closeModal}></ResultModal> : <></>}
         </div>
     );
 };
