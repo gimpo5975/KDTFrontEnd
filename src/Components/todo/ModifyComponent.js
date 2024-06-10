@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getOne } from '../../api/todoApi';
+import { deleteOne, getOne, putOne } from '../../api/todoApi';
 
 const initState = {
     tno: 0,
@@ -26,10 +26,26 @@ const ModifyComponent = ({ tno }) => {
     };
 
     const handleChangeTodoComplete = (e) => {
+        // 사용자가 선택한 값을 변수에 저장합니다.
         const value = e.target.value;
+        // 만약 사용자가 'Y'를 선택했다면, 'COMPLETE' 값을 true로 설정합니다. 그렇지 않으면 false로 설정합니다.
         todo.complete = value === 'Y';
+        // 변경된 todo 객체를 새로운 상태로 설정합니다.
         setTodo({ ...todo });
     };
+    
+    const handleClickDelete = () => {
+        deleteOne(tno).then(data => {
+            console.log("Delete Result : " + data)
+        })
+    };
+
+    const handleClickModify = () => {
+        putOne(todo).then(data => {
+            console.log("Modify Result : " + data)
+        })
+    };
+
 
     return (
         <div className="border-2 border-sky-200 mt-10 m-2 p-4">
@@ -71,10 +87,14 @@ const ModifyComponent = ({ tno }) => {
                 </div>
             </div>
             <div className="flex justify-end p-4">
-                <button type="button" className="inline-block rounded p-4 m-2 text-xl w-32 text-white bg-red-500">
+                <button type="button" className="inline-block rounded p-4 m-2 text-xl w-32 text-white bg-red-500"
+                        onClick={handleClickDelete}
+                >
                     Delete
                 </button>
-                <button type="button" className="rounded p-4 m-2 text-xl w-32 text-white bg-blue-500">
+                <button type="button" className="rounded p-4 m-2 text-xl w-32 text-white bg-blue-500"
+                        onClick={handleClickModify}
+                >
                     Modify
                 </button>
             </div>
